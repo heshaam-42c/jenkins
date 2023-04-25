@@ -6,3 +6,9 @@ RUN apk add python3 && \
  if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
  if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
  rm -r /root/.cache
+RUN pip install alpine
+RUN apk add pkgconf
+RUN apk add build-base
+RUN apk add python3-dev
+RUN apk add postgresql-dev
+RUN apk add postgresql-client
