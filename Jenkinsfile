@@ -21,20 +21,20 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            agent {
-                docker {
-                    image '42crunch/scand-agent:latest'
-                    args '-e SCAN_TOKEN=scan_cfc54641-c185-45ce-98a3-b3ac473f3fed -e PLATFORM_SERVICE=services.42crunch.com:8001'
-                }
-            }
-            steps {
+        // stage('Build') {
+        //     agent {
+        //         docker {
+        //             image '42crunch/scand-agent:latest'
+        //             args '-e SCAN_TOKEN=scan_cfc54641-c185-45ce-98a3-b3ac473f3fed -e PLATFORM_SERVICE=services.42crunch.com:8001'
+        //         }
+        //     }
+        //     steps {
 
-            }
-        }
+        //     }
+        // }
 
         // docker run -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql:latest  --default-authentication-plugin=mysql_native_password
-        stage("Run MySQL") {
+        stage("Conformance Scan") {
             steps {
                 script {
                     docker.image('42crunch/scand-agent:latest').withRun('-e SCAN_TOKEN=scan_cfc54641-c185-45ce-98a3-b3ac473f3fed -e PLATFORM_SERVICE=services.42crunch.com:8001') {c ->
