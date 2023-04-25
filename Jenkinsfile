@@ -34,13 +34,19 @@ pipeline {
         // }
 
         // docker run --network="host" -e SCAN_TOKEN=scan_20ff1cf0-1cc1-4b1f-8dde-2354e6a8a18f -e PLATFORM_SERVICE=services.42crunch.com:8001 42crunch/scand-agent:latest
-        stage("Conformance Scan") {
+        // stage("Conformance Scan") {
+        //     steps {
+        //         script {
+        //             docker.image('42crunch/scand-agent:latest').withRun('-e SCAN_TOKEN=scan_20ff1cf0-1cc1-4b1f-8dde-2354e6a8a18f -e PLATFORM_SERVICE=services.42crunch.com:8001', '--network=host') {c ->
+        //                 // Run command
+        //             }
+        //         }
+        //     }
+        // }
+
+        stage('Run Conformance Scan') {
             steps {
-                script {
-                    docker.image('42crunch/scand-agent:latest').withRun('--network="host" -e SCAN_TOKEN=scan_20ff1cf0-1cc1-4b1f-8dde-2354e6a8a18f -e PLATFORM_SERVICE=services.42crunch.com:8001') {c ->
-                        // Run command
-                    }
-                }
+      	        sh 'docker run --network="host" -e SCAN_TOKEN=scan_20ff1cf0-1cc1-4b1f-8dde-2354e6a8a18f -e PLATFORM_SERVICE=services.42crunch.com:8001 42crunch/scand-agent:latest'
             }
         }
     }
