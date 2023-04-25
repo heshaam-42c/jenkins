@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     stages {
-        stage('Run Python script') {
+        stage('Fetch OAS files not in SCM') {
             steps {
                 // Execute the Python script and capture the output
                 script {
