@@ -6,7 +6,7 @@ pipeline {
             steps {
                 // Execute the Python script and capture the output
                 script {
-                    def scriptOutput = sh(script: 'python your_script.py', returnStdout: true).trim()
+                    def scriptOutput = sh(script: 'python fetchOAS.py', returnStdout: true).trim()
                     // Set the environment variable with the script output
                     withEnv(["SCRIPT_OUTPUT=${scriptOutput}"]) {
                         echo "Script output: ${scriptOutput}"
