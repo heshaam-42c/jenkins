@@ -7,12 +7,6 @@ pipeline {
     }
 
     stages {
-        stage('Audit OpenAPI files') {
-            steps {
-                audit repositoryName: "${env.GIT_URL}", branchName: "${env.GIT_BRANCH}", credentialsId: '42ctoken', minScore: 75, platformUrl: 'https://platform.42crunch.com', logLevel: 'DEBUG'
-            }
-        }
-
         stage('Run Python script') {
             steps {
                 // Execute the Python script and capture the output
@@ -23,6 +17,12 @@ pipeline {
                         echo "Script output: ${scriptOutput}"
                     }
                 }
+            }
+        }
+
+        stage('Audit OpenAPI files') {
+            steps {
+                audit repositoryName: "${env.GIT_URL}", branchName: "${env.GIT_BRANCH}", credentialsId: '42ctoken', minScore: 75, platformUrl: 'https://platform.42crunch.com', logLevel: 'DEBUG'
             }
         }
     }
