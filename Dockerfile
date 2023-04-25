@@ -12,3 +12,5 @@ RUN apk add build-base
 RUN apk add python3-dev
 RUN apk add postgresql-dev
 RUN apk add postgresql-client
+RUN apk add --update docker openrc
+RUN rc-update add docker boot

@@ -37,7 +37,7 @@ pipeline {
         stage("Conformance Scan") {
             steps {
                 script {
-                    docker.image('42crunch/scand-agent:latest').withRun('-e SCAN_TOKEN=scan_cfc54641-c185-45ce-98a3-b3ac473f3fed -e PLATFORM_SERVICE=services.42crunch.com:8001') {c ->
+                    docker.image('42crunch/scand-agent:latest').withRun('-e SCAN_TOKEN=scan_20ff1cf0-1cc1-4b1f-8dde-2354e6a8a18f -e PLATFORM_SERVICE=services.42crunch.com:8001') {c ->
                         // Run command
                     }
                 }
