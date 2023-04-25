@@ -1,9 +1,17 @@
 pipeline {
-    agent { docker { image 'python:3.10.7-alpine' } }
+    agent any
+    
     stages {
-        stage('build') {
+        stage('Run Python script') {
             steps {
-                sh 'python --version'
+                // Execute the Python script and capture the output
+                script {
+                    def scriptOutput = sh(script: 'python your_script.py', returnStdout: true).trim()
+                    // Set the environment variable with the script output
+                    withEnv(["SCRIPT_OUTPUT=${scriptOutput}"]) {
+                        echo "Script output: ${scriptOutput}"
+                    }
+                }
             }
         }
     }
