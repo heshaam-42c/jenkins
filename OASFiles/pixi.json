@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "Pixi Photo Sharing API",
-    "version": "Pixi-JWT-Validation-v2",
+    "version": "Pixi-JWT-Validation",
     "title": "Pixi App API",
     "contact": {
       "email": "nicole.becher@owasp.org"
